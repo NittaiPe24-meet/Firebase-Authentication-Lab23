@@ -6,7 +6,7 @@ import pyrebase
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = 'super-secret-key'
 
-firebaseConfig = {
+config = {
   "apiKey": "AIzaSyDRGjO3hLbaGuUzNjjoUxEuw16Xwadkr7I",
   "authDomain": "yello-ed04e.firebaseapp.com",
   "projectId": "yello-ed04e",
@@ -14,12 +14,14 @@ firebaseConfig = {
   "messagingSenderId": "29543276179",
   "appId": "1:29543276179:web:10a8c74944ae275127f766",
   "measurementId": "G-QZ9QW2LPND",
-  "databaseURL": ""
+  "databaseURL": "https://yello-ed04e-default-rtdb.firebaseio.com"
 }
 
 
 firebase = pyrebase.initialize_app(config)
-auth = firebase.auth
+auth = firebase.auth()
+db = firebase.database()
+
 
 @app.route('/', methods=['GET', 'POST'])
 def signin():
@@ -41,7 +43,7 @@ def signup():
 
 
 @app.route('/add_tweet', methods=['GET', 'POST'])
-def add_tweet():
+def add_tweet():methods
     return render_template("add_tweet.html")
 
 
