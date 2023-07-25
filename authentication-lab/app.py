@@ -48,9 +48,14 @@ def add_tweet():
     if request.method == 'POST':
         tweet = {"title":(request.form['title']), "content":(request.form['content']), "uid":(firebase.auth().user.uid)};
         db.child("Tweets").push(tweet)
+
     else:
         return render_template("add_tweet.html")
 
+
+@app.route('/all_tweets')
+def all_tweets():
+    return render_template("tweets.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
