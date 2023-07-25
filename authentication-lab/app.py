@@ -55,6 +55,7 @@ def add_tweet():
 
 @app.route('/all_tweets')
 def all_tweets():
+    print_tweets = db.child("Tweets").get().val()
     return render_template("tweets.html")
 
 if __name__ == '__main__':
